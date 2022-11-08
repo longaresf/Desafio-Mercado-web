@@ -1,0 +1,31 @@
+{{> Menu}}
+
+{{> Mainsection}}
+
+<script>
+    $('.producto').click(function(e){
+        $(this).addClass('opaco')
+        let productos = JSON.parse(localStorage.getItem('productos'))
+        let exit = productos.find(p => p === this.id)
+        if(!exit){
+            productos.push(this.id)
+            localStorage.setItem('productos', JSON.stringify(productos))
+        }
+    })
+
+    $('.producto').dblclick(function(){
+        $(this).removeClass('opaco')
+        let productos = JSON.parse(localStorage.getItem('productos'))
+        productos = productos.filter(p => p !== this.id)
+        localStorage.setItem('productos', JSON.stringify(productos))
+    })
+
+    let productos = []
+    localStorage.setItem('productos', JSON.stringify(productos))
+</script>
+
+<style>
+    .opaco {
+        opacity: 0.5;
+    }
+</style>

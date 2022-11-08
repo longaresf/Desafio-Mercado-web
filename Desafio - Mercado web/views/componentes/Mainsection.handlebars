@@ -1,0 +1,9 @@
+<div class="container my-3">
+    <h1 class="text-center fs-2">{{bienvenida}}</h1>
+    <div class="row p-5">
+        {{#each productos}}
+        <div class="col-4 p-2">{{> productos producto = this}}</div>
+        {{/each}}
+    </div>
+</div>
+

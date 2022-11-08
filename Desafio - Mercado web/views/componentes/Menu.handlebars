@@ -1,0 +1,47 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <button type="button" class="btn m-auto" id="carrito" data-bs-toggle="modal" data-bs-target="#modalcarrito">
+        <img src="/img/cart.svg" class="carrito" alt="" />
+    </button>
+</nav>
+
+<script>
+    $('#carrito').click(()=>{
+        let productos = JSON.parse(localStorage.getItem("productos"))
+        let prod = ""
+        productos.forEach(pr=> prod += `
+        <div class="producto"> <img width = "100" src="/img/${pr}.png" alt=""></div>
+    `)
+    $('#productos').html(prod)
+    })
+
+    $('.producto').click(() =>{
+        alert()
+        let productos = JSON.parse(localStorage.getItem("productos"))
+        console.log(productos)
+        $(this).attr('src')
+    })
+</script>
+
+<style>
+    .carrito{
+        width: 50px;
+        margin-left: auto;
+    }
+</style>
+
+<div class="modal fade" id="modalcarrito" tabindex="-1" aria-labelledby="titleCenter" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Productos Seleccionados</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div id="productos" class="d-flex justify-content-sm-center"></div>
+                  <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+            </div>
+        </div>
+    </div>
+</div>
